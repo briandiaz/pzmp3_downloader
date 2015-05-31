@@ -36,10 +36,11 @@ module Downloader
 		# Download the song
 		def download(song_url)
 			song = parse_song(song_url)
+			song_path = (@album_path) ? @album_path + "/" + song.file_name : song.file_name
 			web_file = open(song.url)
 			if web_file.status[0] == "200"
 				puts "Downloading #{song} ..."
-				File.open(@album_path + "/" + song.file_name,'wb') do |data|
+				File.open(song_path,'wb') do |data|
 					data.write web_file.read
 				end
 				puts "#{song} successfully downloaded!"
@@ -60,7 +61,8 @@ module Downloader
 		private
 			# Creates the album path
 			def create_album_path(url)
-				@album_path = url.split('/').last.sub!(".html","").gsub!("-"," ")
+				@album_path = url.split('/').last.sub!(".html","").gsub!(/-|mp3|songs/," ").strip
+				puts @album_path.strip
 				Dir.mkdir @album_path unless File.exists?(@album_path)
 			end
 
