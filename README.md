@@ -2,7 +2,7 @@
 
 ## Information
 
-pzmp3_downloader is a album song downloader from http://pzmp3.com/
+pzmp3_downloader is a song downloader from http://pzmp3.com/
 
 ## Getting Started
 
