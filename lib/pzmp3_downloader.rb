@@ -61,8 +61,7 @@ module Downloader
 		private
 			# Creates the album path
 			def create_album_path(url)
-				@album_path = url.split('/').last.sub!(".html","").gsub!(/-|mp3|songs/," ").strip
-				puts @album_path.strip
+				@album_path = url.split('/').last.gsub!(/-|mp3|songs|.html/,"").strip
 				Dir.mkdir @album_path unless File.exists?(@album_path)
 			end
 
