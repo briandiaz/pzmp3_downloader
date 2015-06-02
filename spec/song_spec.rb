@@ -44,4 +44,11 @@ describe Song do
 		it { subject.to_s.should eq("#{artist_name} - #{song_name} [#{subject.file_name}]")}
 	end
 
+	context "#parse" do
+		let(:args_to_parse) {["Like A Pimp","Welcome 2 Tha Chuuch","Snoop Dogg","Hip Hop Music"] }
+		let(:url_to_parse) { "http://pzmp3.com/music/song/32362/Like-A-Pimp-Snoop-Dogg-mp3-song.html" }
+		it { Song.parse(args_to_parse, url_to_parse).should be_an_instance_of(Song) }
+		it {Song.parse(args_to_parse, url_to_parse).should equal?(Song.new(song_name, album_name, artist_name, genre_name, link))}
+	end
+
 end
