@@ -1,6 +1,6 @@
 spec = Gem::Specification.new do |s| 
   s.name = "pzmp3_downloader"
-  s.version = "0.1"
+  s.version = "0.1.0"
   s.author = "Brian Díaz"
   s.email = "brian@briandiaz.me"
   s.homepage = "https://github.com/briandiaz/pzmp3_downloader"
