@@ -1,4 +1,5 @@
 # pzmp3_downloader
+[![Code Climate](https://codeclimate.com/github/briandiaz/pzmp3_downloader/badges/gpa.svg)](https://codeclimate.com/github/briandiaz/pzmp3_downloader) 
 
 ## Information
 

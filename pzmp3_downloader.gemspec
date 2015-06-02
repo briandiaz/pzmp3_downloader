@@ -15,4 +15,5 @@ spec = Gem::Specification.new do |s|
     "spec/spec_helper.rb",
     "spec/song_spec.rb"
   ]
+  s.add_dependency('nokogiri', '>= 1.4.0')
 end
