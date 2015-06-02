@@ -13,7 +13,8 @@ spec = Gem::Specification.new do |s|
     "lib/song.rb",
     "pzmp3_downloader.gemspec",
     "spec/spec_helper.rb",
-    "spec/song_spec.rb"
+    "spec/song_spec.rb",
+    "bin/pzmp3_downloader"
   ]
   s.add_dependency('nokogiri', '>= 1.4.0')
 end
