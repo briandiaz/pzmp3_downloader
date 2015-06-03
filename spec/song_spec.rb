@@ -1,20 +1,16 @@
 require 'spec_helper'
 require 'song'
 
-describe Song do 
-
+describe Song do
 	let(:song_name){ "Like A Pimp" }
 	let(:album_name){ "Welcome 2 Tha Chuuch" }
 	let(:artist_name){ "Snoop Dogg" }
 	let(:genre_name){ "Hip Hop Music" }
 	let(:link){ "http://pzmp3.com/music/song/32362/Like-A-Pimp-Snoop-Dogg-mp3-song.html" }
 
-	let(:song){ Song.new song_name, album_name, artist_name, genre_name, link }
-
-	subject{ song }	
+	subject(:song){ Song.new song_name, album_name, artist_name, genre_name, link }
 
 	context "creation" do
-
 		it { should respond_to(:name) }
 		it { should respond_to(:artist) }
 		it { should respond_to(:album) }
@@ -33,7 +29,6 @@ describe Song do
 		it "its artist name is Hip Hop Music" do 
 			subject.genre.should == genre_name
 		end
-
 	end
 
 	context "#file_name" do
@@ -47,8 +42,8 @@ describe Song do
 	context "#parse" do
 		let(:args_to_parse) {["Like A Pimp","Welcome 2 Tha Chuuch","Snoop Dogg","Hip Hop Music"] }
 		let(:url_to_parse) { "http://pzmp3.com/music/song/32362/Like-A-Pimp-Snoop-Dogg-mp3-song.html" }
+
 		it { Song.parse(args_to_parse, url_to_parse).should be_an_instance_of(Song) }
 		it {Song.parse(args_to_parse, url_to_parse).should equal?(Song.new(song_name, album_name, artist_name, genre_name, link))}
 	end
-
 end

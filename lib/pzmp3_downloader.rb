@@ -35,22 +35,25 @@ module Downloader
 
 		# Download the song
 		def download(song_url)
+			return "Url not valid" if not valid_url? song_url
 			song = parse_song(song_url)
 			song_path = (@album_path) ? @album_path + "/" + song.file_name : song.file_name
 			web_file = open(song.url)
 			if web_file.status[0] == "200"
-				puts "Downloading #{song} ..."
 				File.open(song_path,'wb') do |data|
 					data.write web_file.read
 				end
 				puts "#{song} successfully downloaded!"
+				true
 			else
-				"Problems downloading file"
+				puts "Problems downloading file"
+				false
 			end
 		end
 
 		# Download all songs of a album specified by an url.
 		def download_album(url)
+			return "Url not valid" if not valid_url? url
 			create_album_path(url)
 			songs = get_album_songs_url(url)
 			songs.each do |song|
@@ -63,6 +66,10 @@ module Downloader
 			def create_album_path(url)
 				@album_path = url.split('/').last.gsub!(/-|mp3|songs|.html/,"").strip
 				Dir.mkdir @album_path unless File.exists?(@album_path)
+			end
+
+			def valid_url?(url)
+				((url =~ /pzmp3.com\/music\/song\/[0-9]+\/[0-9a-zA-Z-]+[.html]/) != nil)
 			end
 
 	end		
